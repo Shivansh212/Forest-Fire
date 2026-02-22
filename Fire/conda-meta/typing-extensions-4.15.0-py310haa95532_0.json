@@ -1,0 +1,32 @@
+{
+  "build": "py310haa95532_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [],
+  "depends": [
+    "python >=3.10,<3.11.0a0",
+    "typing_extensions 4.15.0 py310haa95532_0"
+  ],
+  "extracted_package_dir": "C:\\Users\\Asus\\anaconda3\\pkgs\\typing-extensions-4.15.0-py310haa95532_0",
+  "files": [],
+  "fn": "typing-extensions-4.15.0-py310haa95532_0.conda",
+  "license": "PSF-2.0",
+  "link": {
+    "source": "C:\\Users\\Asus\\anaconda3\\pkgs\\typing-extensions-4.15.0-py310haa95532_0",
+    "type": 1
+  },
+  "md5": "d44d4c9f77bd7c6363acebf960121848",
+  "name": "typing-extensions",
+  "package_tarball_full_path": "C:\\Users\\Asus\\anaconda3\\pkgs\\typing-extensions-4.15.0-py310haa95532_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "77937d843028ea70e690ae3dfaf278393dbd98a4945961827b4bc295b76ddd2a",
+  "size": 12330,
+  "subdir": "win-64",
+  "timestamp": 1756281344000,
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/typing-extensions-4.15.0-py310haa95532_0.conda",
+  "version": "4.15.0"
+}
