@@ -26,12 +26,12 @@ class DataIngestion:
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
 
-            logging.info('Feature Engineering')
+            
             
             df.rename(columns={'FIRE_START_DAY':'FIRE_OCCURED'},inplace=True)
 
             # Dropping columns
-            df.drop(columns={'DATE','DAY_OF_YEAR'},inplace=True)
+            df.drop(columns={'DATE','DAY_OF_YEAR','TEMP_RANGE'},inplace=True)
 
             # Dropping the null values(As per THE EDA)
             df.dropna(inplace=True)
@@ -39,6 +39,7 @@ class DataIngestion:
             # Converting the MAX and MIN temp from Farenheit to Celsius
             df['MAX_TEMP']=(df['MAX_TEMP']-32)*5/9
             df['MIN_TEMP']=(df['MIN_TEMP']-32)*5/9
+            df['TEMP_RANGE']=(df['MAX_TEMP']-df['MIN_TEMP'])
 
             # Mapping the Target variable False(Fire not occured as=0) and True(Fire occured as 1)
             df.loc[df['FIRE_OCCURED']==False,'FIRE_OCCURED'] = 0
