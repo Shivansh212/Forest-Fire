@@ -4,7 +4,6 @@ from src.Exception import customException
 from src.Logger import logging
 
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 @dataclass
@@ -12,6 +11,7 @@ class DataIngestionConfig:
     raw_data_path: str= os.path.join('artifacts','data.csv')
     train_data_path: str=os.path.join('artifacts','train.csv')
     test_data_path: str= os.path.join('artifacts','test.csv')
+    time_column: str = "DATE"
     
 
 class DataIngestion:
@@ -30,6 +30,11 @@ class DataIngestion:
             
             df.rename(columns={'FIRE_START_DAY':'FIRE_OCCURED'},inplace=True)
 
+            # Ensure chronological ordering (time-series safe split)
+            if self.ingestion_config.time_column in df.columns:
+                df[self.ingestion_config.time_column] = pd.to_datetime(df[self.ingestion_config.time_column])
+                df = df.sort_values(self.ingestion_config.time_column).reset_index(drop=True)
+
             # Dropping columns
             df.drop(columns={'DATE','DAY_OF_YEAR','TEMP_RANGE'},inplace=True)
 
@@ -42,14 +47,16 @@ class DataIngestion:
             df['TEMP_RANGE']=(df['MAX_TEMP']-df['MIN_TEMP'])
 
             # Mapping the Target variable False(Fire not occured as=0) and True(Fire occured as 1)
-            df.loc[df['FIRE_OCCURED']==False,'FIRE_OCCURED'] = 0
-            df.loc[df['FIRE_OCCURED']==True,'FIRE_OCCURED'] = 1
-            df['FIRE_OCCURED']=pd.to_numeric(df['FIRE_OCCURED'])
+            df["FIRE_OCCURED"] = df["FIRE_OCCURED"].astype(int)
 
 
             logging.info("Train_Test split started")
             
-            train_set, test_set = train_test_split(df,test_size=0.3,random_state=42)
+            # IMPORTANT: time-series split (no shuffling)
+            split_idx = int(len(df) * 0.7)
+            train_set = df.iloc[:split_idx].copy()
+            test_set = df.iloc[split_idx:].copy()
+
             train_set.to_csv(self.ingestion_config.train_data_path,index=False,header=True)
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
             logging.info("Data ingestion is completed")
