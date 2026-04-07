@@ -20,10 +20,10 @@ class DataTransformationconfig:
 class DataTransformation:
     def __init__(self):
         self.transformation_config=DataTransformationconfig()
-class DataTransformation:
+        
     def get_data_transformation(self):
         try:
-            numerical=['PRECIPITATION','MAX_TEMP','MIN_TEMP','AVG_WIND_SPEED','WIND_TEMP_RATIO','LAGGED_PRECIPITATION','LAGGED_AVG_WIND_SPEED','TEMP_RANGE'],
+            numerical=['PRECIPITATION','MAX_TEMP','MIN_TEMP','AVG_WIND_SPEED','WIND_TEMP_RATIO','LAGGED_PRECIPITATION','LAGGED_AVG_WIND_SPEED','TEMP_RANGE']
             categorical=['SEASON']
             logging.info(f'Numerical Columns:{numerical}')
             logging.info(f'Categorical Columns:{categorical}')
@@ -48,7 +48,7 @@ class DataTransformation:
         except Exception as e:
             raise customException(e)
         
-    def make_lstm_sequence(X:np.ndarray, y:np.ndarray, lookback:int, horizon:int=1, stride:int=1):
+    def make_lstm_sequence(self,X:np.ndarray, y:np.ndarray, lookback:int, horizon:int=1, stride:int=1):
         if lookback <=0: raise ValueError("Lookback must not be 0")
         if horizon<=0: raise ValueError("Horizon must not be 0")
         if stride<0: raise ValueError("Stride must not be 0")
@@ -57,7 +57,7 @@ class DataTransformation:
         y=np.asarray(y).reshape(-1)
 
         if X.ndim!=2: raise ValueError(f'X must be 2D got dimension{X.shape}')
-        if y.ndim!=2: raise ValueError(f'y must be 2D got dimension{y.shape}')
+        if y.ndim!=1: raise ValueError(f'y must be 2D got dimension{y.shape}')
         if len(X)!=len(y): raise ValueError(f'X and y must be same length')
 
         n=len(X)
@@ -80,11 +80,11 @@ class DataTransformation:
             test_df=pd.read_csv(test_path)
             logging.info('Train and Test data are acquired')
 
-            target_column=['FIRE_OCCURED']
+            target_column='FIRE_OCCURED'
 
             #seperating train and test data
             input_train_df=train_df.drop(columns=[target_column],axis=1)
-            output_train_df=test_df[target_column]
+            output_train_df=train_df[target_column]
 
             input_test_df=test_df.drop(columns=[target_column],axis=1)
             output_test_df=test_df[target_column]
@@ -97,16 +97,16 @@ class DataTransformation:
             logging.info('Create LSTM sequences using make_lstm_sequence function')
             lookback_days=7
             X_train,y_train=self.make_lstm_sequence(X=input_train_arr,y=output_train_df.values,lookback=lookback_days)
-            X_test,y_test=self.make_lstm_sequence(X=input_test_arr,y=output_test_df.value,lookback=lookback_days)
+            X_test,y_test=self.make_lstm_sequence(X=input_test_arr,y=output_test_df.values,lookback=lookback_days)
 
             logging.info(f"Final Train Shape: X={X_train.shape}, y={y_train.shape}")
             logging.info(f"Final Test Shape: X={X_test.shape}, y={y_test.shape}")
 
             save_object(
-                file_path=self.transformation_config.preprocessor_obj_file_path,
+                file_path= self.transformation_config.preprocessor_obj_file_path,
                 obj=preprocessor_obj
             )
-            return X_train,y_train,X_test,y_test,self.transformation_config.preprocessor_obj_file_path
+            return X_train, y_train, X_test, y_test, self.transformation_config.preprocessor_obj_file_path
         except Exception as e:
             raise customException(e)
 

@@ -2,6 +2,8 @@ import os
 import sys
 from src.Exception import customException
 from src.Logger import logging
+from src.components.Data_Transformation import DataTransformationconfig
+from src.components.Data_Transformation import DataTransformation
 
 import pandas as pd
 from dataclasses import dataclass
@@ -69,6 +71,3 @@ class DataIngestion:
             logging.error(f"Error in Data Ingestion: {e}")
             raise customException(e)
         
-# if __name__=="__main__":
-#     obj=DataIngestion()
-#     obj.initiate_data_ingestion()

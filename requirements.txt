@@ -3,6 +3,7 @@ numpy
 seaborn
 matplotlib
 Scikit-learn
-
+tensorflow
+keras
 
 -e .
