@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enter Weather Data</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: white;
+}
+
+.container {
+    width: 500px;
+    margin: 50px auto;
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #00c6ff;
+    border: none;
+    border-radius: 25px;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🌦 Enter Weather Features</h2>
+
+    <form action="/predict" method="POST">
+
+        <input type="number" step="any" name="PRECIPITATION" placeholder="Precipitation">
+        <input type="number" step="any" name="MAX_TEMP" placeholder="Max Temp (°C)">
+        <input type="number" step="any" name="MIN_TEMP" placeholder="Min Temp (°C)">
+        <input type="number" step="any" name="AVG_WIND_SPEED" placeholder="Avg Wind Speed">
+        <input type="number" name="YEAR" placeholder="Year">
+
+        <input type="number" step="any" name="WIND_TEMP_RATIO" placeholder="Wind Temp Ratio">
+        <input type="number" name="MONTH" placeholder="Month">
+
+        <select name="SEASON">
+            <option value="">Select Season</option>
+            <option value="Winter">Winter</option>
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Autumn">Autumn</option>
+        </select>
+
+        <input type="number" step="any" name="LAGGED_PRECIPITATION" placeholder="Lagged Precipitation">
+        <input type="number" step="any" name="LAGGED_AVG_WIND_SPEED" placeholder="Lagged Wind Speed">
+        <input type="number" step="any" name="TEMP_RANGE" placeholder="Temp Range">
+
+        <button type="submit">Predict 🔥</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forest Fire Predictor</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: 
+        linear-gradient(rgba(15,32,39,0.7), rgba(44,83,100,0.7)),
+        url('https://t3.ftcdn.net/jpg/01/80/65/68/360_F_180656803_23bAMoCV2q4onVIh4V1RYVyyDOuP6oqz.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+}
+
+.container {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.btn {
+    margin-top: 40px;
+    padding: 15px 30px;
+    background: #00c6ff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔥 Forest Fire Early-Warning System</h1>
+
+    <p>
+        An end-to-end Deep Learning pipeline that analyzes 7-day weather sequences 
+        using an LSTM neural network. Engineered for disaster prevention, this 
+        system predicts high-risk fire conditions with high recall and reliability.
+    </p>
+
+    <p style="margin-top:20px;">
+        Built with MLOps principles, this system transforms raw weather data into 
+        real-time fire risk predictions using advanced preprocessing and sequence modeling.
+    </p>
+
+    <a href="form.html">
+        <button class="btn">Predict Fire Risk 🚀</button>
+    </a>
+</div>
+
+</body>
+</html>

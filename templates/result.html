@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prediction Result</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1d2b64, #f8cdda);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    margin-top: 150px;
+}
+
+.card {
+    display: inline-block;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+.safe {
+    color: #00ffcc;
+}
+
+.danger {
+    color: #ff4b2b;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <h1>🔥 Prediction Result</h1>
+
+        <!-- Replace {{prediction}} dynamically -->
+        <h2 class="danger">{{ prediction }}</h2>
+
+        <p>
+            Based on the weather conditions, the model has predicted the likelihood 
+            of a forest fire occurrence.
+        </p>
+
+        <a href="form.html">
+            <button class="btn">Try Again</button>
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>
