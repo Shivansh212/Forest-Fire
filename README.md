@@ -37,6 +37,8 @@ By learning from over **41 years of historical weather and fire data** sourced f
 | Deep Learning | TensorFlow, Keras (LSTM RNN) |
 | Data Processing | Pandas, NumPy |
 | Model Evaluation | Scikit-learn |
+| Web Framework | Flask (`application.py` + `templates/`) |
+| Packaging | `setup.py` (installable Python package) |
 | Data Format | CSV |
 
 ---
@@ -79,7 +81,7 @@ The model is evaluated with a focus on **Recall** — because in fire prediction
 
 ## 📸 Screenshots & Visualizations
 
-> *Screenshots of training loss curves, confusion matrix, and prediction outputs are available in the `/IMAGE` folder.*
+> *Screenshots of training loss curves, confusion matrix, and prediction outputs are available in the `/Image` folder.*
 
 ---
 
@@ -94,15 +96,23 @@ The model is evaluated with a focus on **Recall** — because in fire prediction
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Shivansh212/forest-fire-risk-predictor.git
-cd forest-fire-risk-predictor
+git clone https://github.com/Shivansh212/Forest-Fire.git
+cd Forest-Fire
 
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Run the predictor
-python predict.py --input data/sample_input.csv
+# 3. Install the project as a package
+pip install -e .
+
+# 4. Run the training pipeline
+python src/pipelines/Training_Pipeline.py
+
+# 5. Launch the Flask web app
+python application.py
 ```
+
+> The app will be available at `http://localhost:5000`
 
 ---
 
@@ -111,23 +121,41 @@ python predict.py --input data/sample_input.csv
 ```
 forest-fire-risk-predictor/
 │
-├── data/
-│   ├── raw/                  # Original dataset from Georgia Southern University
-│   └── processed/            # Cleaned and feature-engineered data
+├── IMAGE/                          # Project screenshots & visuals
 │
-├── model/
-│   ├── lstm_model.h5         # Trained LSTM model weights
-│   └── scaler.pkl            # Fitted scaler for input normalization
+├── Notebook/                       # Exploratory Data Analysis
+│   ├── data/                       # Raw data used in notebook
+│   └── Forest_Fire_EDA.ipynb       # EDA & model prototyping notebook
 │
-├── visuals/
-│   └── confusion_matrix.png  # Model evaluation plots
+├── artifacts/                      # Auto-generated model artifacts
+│   ├── data.csv                    # Full processed dataset
+│   ├── train.csv                   # Training split
+│   ├── test.csv                    # Test split
+│   ├── lstm_model.h5               # Trained LSTM model weights
+│   └── preprocessor.pkl            # Fitted data preprocessor
 │
-├── notebooks/
-│   └── exploration.ipynb     # EDA and model training notebook
+├── src/                            # Core source package
+│   ├── components/                 # Modular ML pipeline components
+│   │   ├── Data_Ingestion.py       # Loads & splits raw data
+│   │   ├── Data_Transformation.py  # Feature engineering & scaling
+│   │   ├── Model_Trainer.py        # LSTM model training & evaluation
+│   │   └── __init__.py
+│   │
+│   ├── pipelines/                  # End-to-end pipeline orchestration
+│   │   ├── Training_Pipeline.py    # Runs full training workflow
+│   │   ├── Prediction_Pipeline.py  # Loads model & runs inference
+│   │   └── __init__.py
+│   │
+│   ├── Exception.py                # Custom exception handling
+│   ├── Logger.py                   # Centralized logging
+│   ├── Utils.py                    # Shared utility functions
+│   └── __init__.py
 │
-├── predict.py                # Main prediction script
-├── train.py                  # Model training script
+├── templates/                      # Flask HTML templates (Web UI)
+├── application.py                  # Flask app entry point
+├── setup.py                        # Package installation config
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
@@ -169,7 +197,3 @@ This project is licensed under the [MIT License](LICENSE).
 - **Inspiration:** The growing global urgency of wildfire prevention and climate resilience
 
 ---
-
-<p align="center">
-  <i>Built with 🔥 and a deep belief that AI can help us protect what matters.</i>
-</p>
