@@ -1,4 +1,4 @@
-# 🔥 Forest Fire Risk Predictor
+# Forest Fire Risk Predictor
 
 > **Predicting wildfire ignition before it happens — using 41 years of climate data and deep learning.**
 
