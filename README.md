@@ -9,27 +9,27 @@
 
 ---
 
-## 📌 Problem Statement
+## Problem Statement
 
-Forest fires cause catastrophic damage to ecosystems, wildlife, and human lives every year. Traditional fire detection systems react **after** a fire has started — often too late to prevent large-scale destruction.
+Forest fires cause catastrophic damage to ecosystems, wildlife, and human lives every year. Traditional fire detection systems react **after** a fire has started, often too late to prevent large-scale destruction.
 
 This project flips that model: instead of **detecting** fires, it **predicts** them.
 
-By learning from over **41 years of historical weather and fire data** sourced from **Georgia Southern University**, this system identifies dangerous atmospheric patterns and outputs a risk score — giving fire management authorities the window they need to act **before** ignition.
+By learning from over **41 years of historical weather and fire data** sourced from **Georgia Southern University**, this system identifies dangerous atmospheric patterns and outputs a risk score, giving fire management authorities the window they need to act **before** ignition.
 
 ---
 
-## ✨ Features
+## Features
 
-- 🧠 **LSTM-based Deep Learning** — A Long Short-Term Memory (LSTM) Recurrent Neural Network captures complex temporal weather patterns to model fire risk over time
-- 📂 **CSV / File-based Input** — Feed in weather observation data via structured CSV files for quick batch predictions
-- 📊 **Risk Score Output** — Outputs a probability score indicating the likelihood of a fire-start event on a given day
-- 📉 **Model Evaluation Metrics** — Includes Confusion Matrix, Recall, Precision, and other diagnostics to assess model performance
-- 📅 **41 Years of Training Data** — Trained on a rich historical dataset spanning four decades, enabling the model to recognize seasonal and long-term fire patterns
+- **LSTM-based Deep Learning** — A Long Short-Term Memory (LSTM) Recurrent Neural Network captures complex temporal weather patterns to model fire risk over time
+- **CSV / File-based Input** — Feed in weather observation data via structured CSV files for quick batch predictions
+- **Risk Score Output** — Outputs a probability score indicating the likelihood of a fire-start event on a given day
+- **Model Evaluation Metrics** — Includes Confusion Matrix, Recall, Precision, and other diagnostics to assess model performance
+- **41 Years of Training Data** — Trained on a rich historical dataset spanning four decades, enabling the model to recognize seasonal and long-term fire patterns
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Tools |
 |---|---|
@@ -43,7 +43,7 @@ By learning from over **41 years of historical weather and fire data** sourced f
 
 ---
 
-## 📥 Input Features
+## Input Features
 
 The model is trained on the following weather and derived features:
 
@@ -66,16 +66,16 @@ The model is trained on the following weather and derived features:
 
 ---
 
-## 📊 Model Performance
+## Model Performance
 
-The model is evaluated with a focus on **Recall** — because in fire prediction, **missing a fire is far costlier than a false alarm**.
+The model is evaluated with a focus on **Recall**, because in fire prediction, **missing a fire is far costlier than a false alarm**.
 
 | Metric | Score |
 |---|---|
-| 🔥 Fire Recall | **88%** |
-| 🎯 Precision | **54%** |
+| Fire Recall | **88%** |
+| Precision | **54%** |
 
-> **Interpretation:** The model correctly identifies **88% of actual fire-risk days** — making it a strong candidate for early warning use. The 54% precision reflects the expected class imbalance (fires are rare events), and is an active area of improvement.
+> **Interpretation:** The model correctly identifies **88% of actual fire-risk days**, making it a strong candidate for early warning use. The 54% precision reflects the expected class imbalance (fires are rare events), and is an active area of improvement.
 
 ---
 
@@ -85,7 +85,7 @@ The model is evaluated with a focus on **Recall** — because in fire prediction
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
 
@@ -116,7 +116,7 @@ python application.py
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 forest-fire-risk-predictor/
@@ -161,19 +161,19 @@ forest-fire-risk-predictor/
 
 ---
 
-## 🔮 Future Scope
+## Future Scope
 
 This project is actively evolving. Planned improvements include:
 
-- 🌐 **Web App Deployment** — Build an interactive dashboard using Streamlit or FastAPI for real-time predictions
-- 🌦️ **Live Weather API Integration** — Connect to real-time weather APIs (OpenWeatherMap, NOAA) for on-demand risk scoring
-- 🗺️ **Geographic Expansion** — Extend training data beyond Georgia to cover other high-risk fire regions globally
-- 🎯 **Model Accuracy Improvements** — Experiment with attention mechanisms, ensemble models, and oversampling (SMOTE) to improve Precision
-- 📱 **Mobile Alert System** — Push fire-risk alerts to emergency responders via a mobile notification pipeline
+- **Web App Deployment** — Build an interactive dashboard using Streamlit or FastAPI for real-time predictions
+- **Live Weather API Integration** — Connect to real-time weather APIs (OpenWeatherMap, NOAA) for on-demand risk scoring
+- **Geographic Expansion** — Extend training data beyond Georgia to cover other high-risk fire regions globally
+- **Model Accuracy Improvements** — Experiment with attention mechanisms, ensemble models, and oversampling (SMOTE) to improve Precision
+- **Mobile Alert System** — Push fire-risk alerts to emergency responders via a mobile notification pipeline
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, suggestions, and feedback are welcome!
 
@@ -185,13 +185,13 @@ Contributions, suggestions, and feedback are welcome!
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - **Dataset:** Georgia Southern University — 41 years of historical weather and fire records
 - **Inspiration:** The growing global urgency of wildfire prevention and climate resilience
